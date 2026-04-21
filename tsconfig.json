@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "types": ["bun-types"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@scripts/*": ["./scripts/*"],
+      "@config/*": ["./src/config/*"],
+      "@module/*": ["./src/module/*"],
+      "@interface/*": ["./src/interfaces/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@util/*": ["./src/util/*"],
+      "@middleware/*": ["./src/middleware/*"],
+      "@data/*": ["./src/data/*"],
+      "@database/*": ["./src/database/*"]
+    },
+  }
+}

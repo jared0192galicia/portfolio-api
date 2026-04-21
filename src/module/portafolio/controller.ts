@@ -1,0 +1,68 @@
+import { OK } from "@lib/httpStatusCodes";
+import { queryPostLocation } from "./databases";
+
+export async function postLocation(context: any) {
+  const {
+    id_cuenta,
+    ip,
+    network,
+    version,
+    city,
+    region,
+    region_code,
+    country,
+    country_name,
+    country_code,
+    country_code_iso3,
+    country_capital,
+    country_tld,
+    continent_code,
+    in_eu,
+    postal,
+    latitude,
+    longitude,
+    timezone,
+    utc_offset,
+    country_calling_code,
+    currency,
+    currency_name,
+    languages,
+    country_area,
+    country_population,
+    asn,
+    org,
+  } = await context.req.json();
+
+  await queryPostLocation({
+    id_cuenta,
+    ip,
+    network,
+    version,
+    city,
+    region,
+    region_code,
+    country,
+    country_name,
+    country_code,
+    country_code_iso3,
+    country_capital,
+    country_tld,
+    continent_code,
+    in_eu,
+    postal,
+    latitude,
+    longitude,
+    timezone,
+    utc_offset,
+    country_calling_code,
+    currency,
+    currency_name,
+    languages,
+    country_area,
+    country_population,
+    asn,
+    org,
+  });
+
+  return context.json(OK);
+}
