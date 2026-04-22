@@ -1,30 +1,23 @@
-# 1. Etapa de construcción (Build)
+# 1. Build
 FROM oven/bun:latest AS builder
 WORKDIR /app
 
-# Instalar dependencias
 COPY package.json ./
 RUN bun install
 
-# Copiar el código fuente y generar cliente de Prisma
 COPY . .
 RUN bunx prisma generate
 
-# 2. Etapa de ejecución (Final)
+# 2. Runtime
 FROM oven/bun:1.1-slim
 WORKDIR /app
 
-# Copiar archivos necesarios desde builder
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/src ./src
 
-# Exponer el puerto (ajusta según lo que use tu app)
 EXPOSE 3002
 
-RUN bunx prisma migrate dev --name init --preview-feature
-
-RUN bun run start
-# Comando para ejecutar migraciones y luego iniciar la app
-# CMD ["sh", "-c", "bunx prisma migrate deploy && bun run src/index.ts"]
+# Deploy
+CMD ["sh", "-c", "bunx prisma migrate deploy && bun run start"]
