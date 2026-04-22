@@ -1,0 +1,6 @@
+[bundle]
+[loader]
+
+[runtime]
+[runtime.aliases]
+"@scripts" = "./scripts"
