@@ -10,7 +10,7 @@ COPY prisma.config.ts ./prisma.config.ts
 RUN bunx prisma generate
 
 COPY src ./src
-COPY scripts ./scripts        # ← agregar
+COPY scripts ./scripts
 COPY tsconfig.json ./tsconfig.json
 
 # 2. Runtime
@@ -24,9 +24,9 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
 COPY --from=builder /app/src ./src
-COPY --from=builder /app/scripts ./scripts  # ← agregar
+COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/tsconfig.json ./tsconfig.json
 
 EXPOSE 3002
 
-CMD ["sh", "-c", "bunx prisma migrate deploy && bun run start"] 
+CMD ["sh", "-c", "bunx prisma migrate deploy && bun run start"]
