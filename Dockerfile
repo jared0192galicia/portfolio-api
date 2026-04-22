@@ -20,4 +20,4 @@ COPY --from=builder /app/src ./src
 EXPOSE 3002
 
 # Deploy
-CMD ["sh", "-c", "bunx prisma migrate deploy && bun run start"]
+CMD ["sh", "-c", "echo $POSTGRES_URL && bunx prisma migrate deploy && bun run start"]
