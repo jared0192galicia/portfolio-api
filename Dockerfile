@@ -1,5 +1,5 @@
 # 1. Etapa de construcción (Build)
-FROM oven/bun:1.1 AS builder
+FROM oven/bun:latest AS builder
 WORKDIR /app
 
 # Instalar dependencias
