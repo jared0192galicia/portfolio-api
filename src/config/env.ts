@@ -4,8 +4,8 @@ import { z, ZodError } from 'zod';
 const EnvSchema = z.object({
   MODE: z.string().default('development'),
   PORT: z.coerce.number().default(3001),
-  PRODUCTION_URL: z.string().default('https://www.api-devjared.com/'),
-  CORS_ORIGIN: z.string().default('http://localhost:3001'),
+  PRODUCTION_URL: z.string().default('https://www.api.devjared.com/'),
+  CORS_ORIGIN: z.string().default('http://0.0.0.0:3001'),
   ACCESS_TOKEN_SECRET: z.string(),
   JWT_EXPIRATION: z.number().default(2592000),
   POSTGRE_URL: z.string(),
