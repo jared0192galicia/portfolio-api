@@ -23,5 +23,8 @@ COPY --from=builder /app/src ./src
 # Exponer el puerto (ajusta según lo que use tu app)
 EXPOSE 3002
 
+RUN bunx prisma migrate deploy
+
+RUN bun run start
 # Comando para ejecutar migraciones y luego iniciar la app
-CMD ["sh", "-c", "bunx prisma migrate deploy && bun run src/index.ts"]
+# CMD ["sh", "-c", "bunx prisma migrate deploy && bun run src/index.ts"]
